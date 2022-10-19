@@ -6,33 +6,48 @@ using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
-    public GameObject loadingScreen;
-    public GameObject loadingText;
+    [SerializeField] private GameObject _loadingScreen;
+    [SerializeField] private GameObject _loadingText;
 
-    private int levelComplete;
-    private int sceneIndex;
-    private AudioSource buttonSound;
+    private int _levelComplete;
+    private int _sceneIndex;
+    private AudioSource _buttonSound;
+    private bool _loaded = false;
 
     private void Start()
     {
-        levelComplete = PlayerPrefs.GetInt("LevelComplete");
-        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        _levelComplete = PlayerPrefs.GetInt("LevelComplete");
+        _sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
+
+
+    public void LoadLevel(int index)
+    {
+        _loadingScreen.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        if (!_loaded)
+        {
+            _loaded = !_loaded;
+            StartCoroutine(LoadAsync(index));
+        }
+    }
+
 
     public void RestartLevel()
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(_sceneIndex);
     }
 
     public void StartNextLevel()
     {
-        if(sceneIndex > levelComplete && sceneIndex < 5)
+        if(_sceneIndex > _levelComplete && _sceneIndex < 5)
         {
-            PlayerPrefs.SetInt("LevelComplete", sceneIndex);
+            PlayerPrefs.SetInt("LevelComplete", _sceneIndex);
         }
-        loadingScreen.SetActive(true);
-        if (sceneIndex < 5)
-            StartCoroutine(LoadAsync(sceneIndex + 1));
+        _loadingScreen.SetActive(true);
+        if (_sceneIndex < 5)
+            StartCoroutine(LoadAsync(_sceneIndex + 1));
         else
             GoToMainMenu();
     }
@@ -50,7 +65,7 @@ public class SceneController : MonoBehaviour
         {
             if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
             {
-                loadingText.SetActive(true);
+                _loadingText.SetActive(true);
                 if (Input.anyKeyDown)
                     asyncLoad.allowSceneActivation = true;
             }
@@ -65,8 +80,8 @@ public class SceneController : MonoBehaviour
 
     public void ButtonPressedSound()
     {
-        buttonSound = GetComponent<AudioSource>();
-        buttonSound.pitch = Random.Range(0.9f, 1.1f);
-        buttonSound.Play();
+        _buttonSound = GetComponent<AudioSource>();
+        _buttonSound.pitch = Random.Range(0.9f, 1.1f);
+        _buttonSound.Play();
     }
 }
