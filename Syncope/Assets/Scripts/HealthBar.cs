@@ -1,54 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] private Image _bar;//изменяющееся изображение
+    [SerializeField] private float _timeScale=0.02f;//стандартная скорость изменения
 
-    public SceneController sceneController;
-    public Image bar;//изменяющееся изображение
-    public float timeScale;//стандартная скорость изменения
+    private float _fill;//процентное количество хп [0,1]
+    private float _fillCoefficient;//изменение от врагов и хилок [+2/-2]
+    private AudioSource _essenceSound;
 
-    private float fill;//процентное количество хп [0,1]
-    private float fillCoefficient;//изменение от врагов и хилок [+2/-2]
-    private AudioSource essenceSound;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        fill = 1f;
-        fillCoefficient = 1f;
-        essenceSound = transform.root.GetComponent<AudioSource>();
+        GlobalEventManager.HealthChangeEvent.AddListener(HealthChange);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        fill = Mathf.Clamp(fill - Time.deltaTime*timeScale*fillCoefficient,0f,1f);
-        bar.fillAmount = fill;
-        if (fill <= 0)
-            sceneController.RestartLevel();
+        _fill = 1f;
+        _fillCoefficient = 1f;
+        _essenceSound = transform.root.GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        _fill = Mathf.Clamp(_fill - Time.deltaTime*_timeScale*_fillCoefficient,0f,1f);
+        _bar.fillAmount = _fill;
+        if (_fill <= 0)
+            GlobalEventManager.RestartScene();
     }
 
     public float getFill()//получение хп для затухания и мб не только
     {
-        return fill;
+        return _fill;
     }
 
     public void setFillCoefficient(float coeff)
     {
-        fillCoefficient = coeff;
+        _fillCoefficient = coeff;
     }
 
-    public void healthReduce(int affectCoefficient)
+    private void HealthChange(int healthCoefficient)
     {
-        fill -= 1f / (float)affectCoefficient;
-    }
-
-    public void healthIncrease(int increaseCoefficient)
-    {
-        fill += 1f / (float)increaseCoefficient;
-        essenceSound.Play();
+        _fill += 1f / (float)healthCoefficient;
+        if (healthCoefficient > 0) 
+        {
+            _essenceSound.Play();
+        }
     }
 }

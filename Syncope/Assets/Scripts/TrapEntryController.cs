@@ -1,40 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class TrapEntryController : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private TrapController trap;
-    private float gravity = 1f;
-    private bool setGravity = true;
-    private AudioSource trapFallingSound;
+    private Rigidbody2D _trapRigidBody;
+    private TrapController _trap;
+    private float _gravity = 1f;
+    private bool _setGravity = true;
+    private AudioSource _trapFallingSound;
     
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        rb = transform.GetChild(0).GetComponent<Rigidbody2D>();
-        trap = transform.GetChild(0).GetComponent<TrapController>();
-        trapFallingSound = GetComponent<AudioSource>();
+        _trapRigidBody = transform.GetChild(0).GetComponent<Rigidbody2D>();
+        _trap = transform.GetChild(0).GetComponent<TrapController>();
+        _trapFallingSound = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-            rb.isKinematic = false;
-            if (setGravity)
+            _trapRigidBody.isKinematic = false;
+            if (_setGravity)
             {
-                rb.gravityScale = gravity;
-                setGravity = false;
+                _trapRigidBody.gravityScale = _gravity;
+                _setGravity = false;
             }
-            trap.InitiateVolumeCheck();
-            trapFallingSound.PlayOneShot(trapFallingSound.clip);
+            _trap.InitiateVolumeCheck();
+            _trapFallingSound.PlayOneShot(_trapFallingSound.clip);
         }
     }
 
     public void SetTrapGravity(float initialGravity)
     {
-        gravity = initialGravity;
+        _gravity = initialGravity;
     }
 }

@@ -15,7 +15,7 @@ public class MovingPlatform : MonoBehaviour
     private float movingSpeed;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isMoving)
         {

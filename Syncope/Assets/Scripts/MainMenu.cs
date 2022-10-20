@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Button []_levels;
+    [Header("Graphics")]
     [SerializeField] private Dropdown _gDropDown;
     [SerializeField] private Dropdown _rDropDown;
     [SerializeField] private Toggle _wToggle;
+    [Header("Sounds")]
     [SerializeField] private AudioMixerGroup _mixer;
     [SerializeField] private Toggle _mToggle;
     [SerializeField] private Slider _volume;

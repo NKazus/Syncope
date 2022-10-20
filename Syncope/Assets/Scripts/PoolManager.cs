@@ -1,27 +1,27 @@
-﻿using System.Collections;
+﻿//fixed
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PoolManager : MonoBehaviour
 {
-    private static Dictionary<string, LinkedList<GameObject>> poolDictionary;
+    private static Dictionary<string, LinkedList<GameObject>> _poolDictionary;
 
     private void Start()
     {
-        poolDictionary = new Dictionary<string, LinkedList<GameObject>>();
+        _poolDictionary = new Dictionary<string, LinkedList<GameObject>>();
     }
 
     public static GameObject getGameObjectFromPool(GameObject prefab)
     {
-        if (!poolDictionary.ContainsKey(prefab.name))
+        if (!_poolDictionary.ContainsKey(prefab.name))
         {
-            poolDictionary[prefab.name] = new LinkedList<GameObject>();
+            _poolDictionary[prefab.name] = new LinkedList<GameObject>();
         }
         GameObject result;
-        if(poolDictionary[prefab.name].Count > 0)
+        if(_poolDictionary[prefab.name].Count > 0)
         {
-            result = poolDictionary[prefab.name].First.Value;
-            poolDictionary[prefab.name].RemoveFirst();
+            result = _poolDictionary[prefab.name].First.Value;
+            _poolDictionary[prefab.name].RemoveFirst();
             result.SetActive(true);
             return result;
         }
@@ -32,7 +32,7 @@ public class PoolManager : MonoBehaviour
 
     public static void putGameObjectToPool(GameObject target)
     {
-        poolDictionary[target.name].AddFirst(target);
+        _poolDictionary[target.name].AddFirst(target);
         target.SetActive(false);
     }
 }

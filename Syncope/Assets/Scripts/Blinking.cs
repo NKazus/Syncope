@@ -1,12 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
+using System.Collections;
 using UnityEngine;
 
 public class Blinking : MonoBehaviour
 {
-    
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         StartCoroutine(_Blinking(GetComponent<SpriteRenderer>()));
     }
@@ -21,15 +19,15 @@ public class Blinking : MonoBehaviour
         StopCoroutine(_Blinking(GetComponent<SpriteRenderer>()));
     }
 
-    IEnumerator _Blinking(SpriteRenderer sR)
+    private IEnumerator _Blinking(SpriteRenderer spriteRenderer)
     {
-        Color c = sR.color;
+        Color color = spriteRenderer.color;
         float alpha = 1.0f;
         while (true)
         {
-            c.a = Mathf.MoveTowards(c.a, alpha, Time.deltaTime);
-            sR.color = c;
-            if(c.a == alpha)
+            color.a = Mathf.MoveTowards(color.a, alpha, Time.deltaTime);
+            spriteRenderer.color = color;
+            if(color.a == alpha)
             {
                 if (alpha == 1.0f)
                     alpha = 0.0f;

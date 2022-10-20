@@ -1,41 +1,40 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class EnemyGenerator:MonoBehaviour
 {
-    public GameObject[] enemies;//список префабов врагов
-    public float speedMin;
-    public float speedMax;
+    [SerializeField] private GameObject[] _enemies;//список префабов врагов
+    [SerializeField] private float _speedMin=0.5f;
+    [SerializeField] private float _speedMax=6f;
 
-    private float speed;//скорость врага
-    private float spawnPositionX;//середина платформы
-    private float spawnPositionY;//середина платформы
-    private float leftBorder;//левая граница платформы
-    private float rightBorder;//правая
-    private int enemySelector;
-    private float platformHeight;
+    private float _speed;//скорость врага
+    private float _spawnPositionX;//середина платформы
+    private float _spawnPositionY;//середина платформы
+    private float _leftBorder;//левая граница платформы
+    private float _rightBorder;//правая
+    private int _enemySelector;
+    private float _platformHeight;
 
 
     public void SetSpawnPosition(float spawnX, float spawnY)
     {
-        spawnPositionX = spawnX;
-        spawnPositionY = spawnY;
+        _spawnPositionX = spawnX;
+        _spawnPositionY = spawnY;
     }
 
     public void SetBorders(float platformSizeX, float platformSizeY)
     {
-        leftBorder = spawnPositionX - platformSizeX / 2f;
-        rightBorder = spawnPositionX + platformSizeX / 2f;
-        platformHeight = platformSizeY/2f;
+        _leftBorder = _spawnPositionX - platformSizeX / 2f;
+        _rightBorder = _spawnPositionX + platformSizeX / 2f;
+        _platformHeight = platformSizeY/2f;
     }
 
     public void SpawnEnemy()
     {
-        enemySelector = Random.Range(0, enemies.Length);
-        speed = Random.Range(speedMin, speedMax);
-        GameObject currentEnemy = Instantiate(enemies[enemySelector],
-            new Vector3(spawnPositionX,spawnPositionY+platformHeight+enemies[enemySelector].transform.GetChild(0).GetComponent<CircleCollider2D>().radius + 0.5f,0),transform.rotation);
-        currentEnemy.transform.GetChild(0).GetComponent<EnemyController>().SetEnemyParameters(speed, leftBorder, rightBorder);
+        _enemySelector = Random.Range(0, _enemies.Length);
+        _speed = Random.Range(_speedMin, _speedMax);
+        GameObject currentEnemy = Instantiate(_enemies[_enemySelector],
+            new Vector3(_spawnPositionX, _spawnPositionY + _platformHeight + _enemies[_enemySelector].transform.GetChild(0).GetComponent<CircleCollider2D>().radius + 0.5f,0),transform.rotation);
+        currentEnemy.transform.GetChild(0).GetComponent<EnemyController>().SetEnemyParameters(_speed, _leftBorder, _rightBorder);
     }
 }

@@ -1,13 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused = false;
-    public GameObject pauseMenuUI;
-    public SceneController sceneController;
+    public static bool IsPaused = false;
+    [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private SceneController _sceneController;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (isPaused)
+            if (IsPaused)
             {
                 Resume();
             }
@@ -34,18 +31,18 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        pauseMenuUI.SetActive(false);
+        _pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
-        isPaused = false;
+        IsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     private void Pause()
     {
-        pauseMenuUI.SetActive(true);
+        _pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
-        isPaused = true;
+        IsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -53,11 +50,11 @@ public class PauseMenu : MonoBehaviour
     public void Menu()
     {
         Time.timeScale = 1f;
-        sceneController.GoToMainMenu();
+        _sceneController.GoToMainMenu();
     }
 
     public void Exit()
     {
-        sceneController.Exit();
+        _sceneController.Exit();
     }
 }

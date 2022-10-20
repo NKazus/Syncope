@@ -1,38 +1,30 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class ActivatePlatform : MonoBehaviour
 {
-    public bool controlBlinking = false;
-    public bool exitSound = false;
+    public bool ControlBlinking = false;
+    public bool ExitSound = false;
 
-    private GameObject platform;
-    private AudioSource exitClip;
+    private GameObject _platform;
+    private AudioSource _exitClip;
     
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        platform = transform.GetChild(0).gameObject;
-        if (exitSound)
-            exitClip = GetComponent<AudioSource>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _platform = transform.GetChild(0).gameObject;
+        if (ExitSound)
+            _exitClip = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-            platform.SetActive(true);
-            if(exitSound)
-                exitClip.Play();
-            if (controlBlinking)
-                platform.transform.GetChild(0).GetComponent<Blinking>().StartBlinking();
+            _platform.SetActive(true);
+            if(ExitSound)
+                _exitClip.Play();
+            if (ControlBlinking)
+                _platform.transform.GetChild(0).GetComponent<Blinking>().StartBlinking();
         }
     }
 
@@ -40,11 +32,11 @@ public class ActivatePlatform : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-            platform.SetActive(false);
-            if (exitSound)
-                exitClip.Stop();
-            if (controlBlinking)
-                platform.transform.GetChild(0).GetComponent<Blinking>().StopBlinking();
+            _platform.SetActive(false);
+            if (ExitSound)
+                _exitClip.Stop();
+            if (ControlBlinking)
+                _platform.transform.GetChild(0).GetComponent<Blinking>().StopBlinking();
         }
     }
 }

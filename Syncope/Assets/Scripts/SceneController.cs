@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class SceneController : MonoBehaviour
 {
@@ -14,12 +13,21 @@ public class SceneController : MonoBehaviour
     private AudioSource _buttonSound;
     private bool _loaded = false;
 
+    public void Awake()
+    {
+        GlobalEventManager.RestartSceneEvent.AddListener(RestartLevel);
+    }
+
     private void Start()
     {
         _levelComplete = PlayerPrefs.GetInt("LevelComplete");
         _sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
 
+    public int GetSceneIndex()
+    {
+        return _sceneIndex;
+    }
 
     public void LoadLevel(int index)
     {

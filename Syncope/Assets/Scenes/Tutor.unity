@@ -585,11 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a13a3a61931944920157c3365431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damping: 1.5
-  offset: {x: 2, y: 1}
-  isLeft: 0
-  upperLimit: 0
-  bottomLimit: 0
+  _damping: 1.5
+  _offset: {x: 2, y: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -807,7 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae67d5435a3bad4a82c43894d01b873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintPanel: {fileID: 188871528}
+  _hintPanel: {fileID: 188871528}
+  _sceneController: {fileID: 1448877266}
 --- !u!61 &558325118
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1065,8 +1063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f7b9c632721f4fb43b5f56e837a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 1297869636}
-  sceneController: {fileID: 1448877266}
+  _pauseMenuUI: {fileID: 1297869636}
+  _sceneController: {fileID: 1448877266}
 --- !u!1001 &837251791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1337,10 +1335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundSize: 57.5
-  parallaxSpeed: 0.9
-  scroll: 1
-  parallax: 1
+  BackgroundSize: 57.5
+  ParallaxSpeed: 0.9
+  Scroll: 1
+  Parallax: 1
 --- !u!4 &991268177
 Transform:
   m_ObjectHideFlags: 0
@@ -2114,10 +2112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundSize: 57.5
-  parallaxSpeed: 0.6
-  scroll: 1
-  parallax: 1
+  BackgroundSize: 57.5
+  ParallaxSpeed: 0.5
+  Scroll: 1
+  Parallax: 1
 --- !u!4 &1496827704
 Transform:
   m_ObjectHideFlags: 0
@@ -3049,9 +3047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bd90b3478f1d54694b573131e44adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneController: {fileID: 1448877266}
-  bar: {fileID: 31591523}
-  timeScale: 0.035
+  _bar: {fileID: 31591523}
+  _timeScale: 0.02
 --- !u!114 &1962442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3064,8 +3061,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b4b87c2929e0f4480523211d25c7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionCoefficient: 2
-  divisionCoefficient: 2.2
+  _additionCoefficient: 2
+  _divisionCoefficient: 2.2
 --- !u!95 &1962442071
 Animator:
   serializedVersion: 4

@@ -991,11 +991,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a13a3a61931944920157c3365431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damping: 1.5
-  offset: {x: 2, y: 1}
-  isLeft: 0
-  upperLimit: 0
-  bottomLimit: 0
+  _damping: 1.5
+  _offset: {x: 2, y: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1659,8 +1656,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f7b9c632721f4fb43b5f56e837a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuUI: {fileID: 970401691}
-  sceneController: {fileID: 1448877266}
+  _pauseMenuUI: {fileID: 970401691}
+  _sceneController: {fileID: 1448877266}
 --- !u!1001 &837251791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1859,10 +1856,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundSize: 57.5
-  parallaxSpeed: 0.9
-  scroll: 1
-  parallax: 1
+  BackgroundSize: 57.5
+  ParallaxSpeed: 0.9
+  Scroll: 1
+  Parallax: 1
 --- !u!4 &991268177
 Transform:
   m_ObjectHideFlags: 0
@@ -2201,10 +2198,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf17b3f3902d3ab47ae96b1297a5ce74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
+  _enemies:
   - {fileID: 1121969085418758471, guid: 2d6815fd36ae2ff41a3941d9199906fd, type: 3}
-  speedMin: 0.5
-  speedMax: 6
+  _speedMin: 0.5
+  _speedMax: 6
 --- !u!1001 &1445034664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2646,10 +2643,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundSize: 57.5
-  parallaxSpeed: 0.5
-  scroll: 1
-  parallax: 1
+  BackgroundSize: 57.5
+  ParallaxSpeed: 0.5
+  Scroll: 1
+  Parallax: 1
 --- !u!4 &1673265652
 Transform:
   m_ObjectHideFlags: 0
@@ -2896,7 +2893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae67d5435a3bad4a82c43894d01b873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hintPanel: {fileID: 2097810609}
+  _hintPanel: {fileID: 2097810609}
+  _sceneController: {fileID: 1448877266}
 --- !u!61 &1706191962
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3222,9 +3220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bd90b3478f1d54694b573131e44adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneController: {fileID: 1448877266}
-  bar: {fileID: 31591523}
-  timeScale: 0.02
+  _bar: {fileID: 31591523}
+  _timeScale: 0.02
 --- !u!114 &1962442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3237,8 +3234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b4b87c2929e0f4480523211d25c7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  additionCoefficient: 2
-  divisionCoefficient: 2.2
+  _additionCoefficient: 2
+  _divisionCoefficient: 2.2
 --- !u!95 &1962442071
 Animator:
   serializedVersion: 4
@@ -3595,7 +3592,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &2138460671
 Canvas:
   m_ObjectHideFlags: 0
@@ -3683,6 +3680,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948057182836171755, guid: 2d6815fd36ae2ff41a3941d9199906fd,
+        type: 3}
+      propertyPath: _speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948057182836171755, guid: 2d6815fd36ae2ff41a3941d9199906fd,
+        type: 3}
+      propertyPath: _leftBorder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8948057182836171755, guid: 2d6815fd36ae2ff41a3941d9199906fd,
+        type: 3}
+      propertyPath: _rightBorder
+      value: 11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d6815fd36ae2ff41a3941d9199906fd, type: 3}

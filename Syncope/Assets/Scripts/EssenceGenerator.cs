@@ -1,39 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class EssenceGenerator : MonoBehaviour
 {
-    public GameObject[] essences;
-    public float essenceDelta;
-    public float minHeight;//высота над платформой
-    public float maxHeight;
+    [SerializeField] private GameObject[] _essences;
+    [SerializeField] private float _essenceDelta = 8f;
+    [SerializeField] private float _minHeight = 2f;//высота над платформой
+    [SerializeField] private float _maxHeight = 4f;
 
-    private int essenceSelector;
-    private float offset;
-    private float spawnPositionX;//середина платформы
-    private float spawnPositionY;//середина платформы
-    private float platformHeight;
-    private float height;
+    private int _essenceSelector;
+    private float _offset;
+    private float _spawnPositionX;//середина платформы
+    private float _spawnPositionY;//середина платформы
+    private float _platformHeight;
+    private float _height;
 
     public void SetSpawnPosition(float spawnX, float spawnY)
     {
-        spawnPositionX = spawnX;
-        spawnPositionY = spawnY;
+        _spawnPositionX = spawnX;
+        _spawnPositionY = spawnY;
     }
 
     public void SetPlatformHeight(float platHeight)
     {
-        platformHeight = platHeight / 2f;
+        _platformHeight = platHeight / 2f;
     }
 
     public void SpawnEssence()
     {
-        essenceSelector = Random.Range(0, essences.Length);
-        offset = Random.Range(-essenceDelta, essenceDelta);
-        height = Random.Range(minHeight, maxHeight);
-        GameObject currentEssence = PoolManager.getGameObjectFromPool(essences[essenceSelector]);
-        currentEssence.transform.position = new Vector3(spawnPositionX + offset,spawnPositionY+platformHeight+height,0);
-        //currentEssence.transform.GetChild(0).GetChild(0).GetComponent<Blinking>().StartBlinking();
+        _essenceSelector = Random.Range(0, _essences.Length);
+        _offset = Random.Range(-_essenceDelta, _essenceDelta);
+        _height = Random.Range(_minHeight, _maxHeight);
+        GameObject currentEssence = PoolManager.getGameObjectFromPool(_essences[_essenceSelector]);
+        currentEssence.transform.position = new Vector3(_spawnPositionX + _offset, _spawnPositionY + _platformHeight + _height, 0);
     }
 }

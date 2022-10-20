@@ -1,33 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    private PlayerController player;
+    [SerializeField] private float _speed = 1f;
+    [SerializeField] private float _leftBorder = 6f;
+    [SerializeField] private float _rightBorder = 11f;
+    private AudioSource _enemySound;
 
-    public float speed = 0;
-    public float leftBorder;
-    public float rightBorder;
-
-    private AudioSource enemySound;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        enemySound = GetComponent<AudioSource>();
+        _enemySound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
-        if (transform.position.x >= rightBorder)
+        transform.Translate(Vector2.left * _speed * Time.deltaTime);
+        if (transform.position.x >= _rightBorder)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
         }
-        if (transform.position.x <= leftBorder)
+        if (transform.position.x <= _leftBorder)
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
         }
@@ -38,9 +32,8 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-            player.affectedByEnemy(true);
-            enemySound.Play();
-            print("enemy_on");
+            GlobalEventManager.AffectPlayerHealth(true);
+            _enemySound.Play();
         }
     }
 
@@ -48,16 +41,15 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-            player.affectedByEnemy(false);
-            enemySound.Stop();
-            print("enemy_off");
+            GlobalEventManager.AffectPlayerHealth(false);
+            _enemySound.Stop();
         }
     }
 
     public void SetEnemyParameters(float speed, float lBorder, float rBorder)
     {
-        this.speed = speed;
-        leftBorder = lBorder;
-        rightBorder = rBorder;
+        this._speed = speed;
+        _leftBorder = lBorder;
+        _rightBorder = rBorder;
     }
 }

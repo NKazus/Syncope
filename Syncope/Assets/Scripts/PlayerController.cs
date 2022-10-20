@@ -26,6 +26,10 @@ public class PlayerController : MonoBehaviour
     private float dash = 0f;
     private int extraDashes;
 
+    private void Awake()
+    {
+        GlobalEventManager.HealthAffectingEvent.AddListener(AffectedByEnemy);
+    }
     private void Start()
     {
         extraJumps = extraJumpsValue;
@@ -60,7 +64,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         if (transform.position.y < -5f)
-            sceneController.RestartLevel();
+            GlobalEventManager.RestartScene();
     }
 
     private void FixedUpdate()
@@ -75,7 +79,7 @@ public class PlayerController : MonoBehaviour
             Flip();
     }
 
-    void Flip()
+    private void Flip()
     {
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
@@ -83,7 +87,7 @@ public class PlayerController : MonoBehaviour
         transform.localScale = Scaler;
     }
 
-    public void setHiding(bool enableHiding)
+    public void SetHiding(bool enableHiding)
     {
         canHide = enableHiding;
         if (canHide)
@@ -100,7 +104,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void affectedByEnemy(bool decreasing)
+    private void AffectedByEnemy(bool decreasing)
     {
         if (decreasing)
             health.setFillCoefficient(3f);//сильнее убывает хп

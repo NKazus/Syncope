@@ -1,28 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿//fixed
 using UnityEngine;
 
 public class Fading : MonoBehaviour
 {
-    public float additionCoefficient;
-    public float divisionCoefficient;
+    [SerializeField] private float _additionCoefficient = 2f;
+    [SerializeField] private float _divisionCoefficient = 2.2f;
 
-    private SpriteRenderer character;
-    private Color color;
-    private HealthBar health;
+    private SpriteRenderer _character;
+    private Color _color;
+    private HealthBar _health;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        character = GetComponent<SpriteRenderer>();
-        color = character.material.color;
-        health = GetComponent<HealthBar>();
+        _character = GetComponent<SpriteRenderer>();
+        _color = _character.material.color;
+        _health = GetComponent<HealthBar>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        color.a = Mathf.Log((health.getFill()+additionCoefficient)* (health.getFill() + additionCoefficient))/divisionCoefficient;
-        character.material.color = color;
+        _color.a = Mathf.Log((_health.getFill()+ _additionCoefficient) * (_health.getFill() + _additionCoefficient))/ _divisionCoefficient;
+        _character.material.color = _color;
     }
 }

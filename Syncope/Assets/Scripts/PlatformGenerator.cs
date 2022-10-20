@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlatformGenerator : MonoBehaviour
 {
 
-    //public GameObject healingPlatform;
     public GameObject[] platforms;//список префабов платформ
     public Transform generationPoint;
     public float distanceBetween;//расстояние между платформами
@@ -127,9 +124,7 @@ public class PlatformGenerator : MonoBehaviour
                         enemyGenerator.SetSpawnPosition(transform.position.x, transform.position.y);//место спавна врага
                         enemyGenerator.SetBorders(platformsWidth[platformSelector], platformsHeight[platformSelector]);//ширина текущей платформы
                         enemyGenerator.SpawnEnemy();
-                        print("spawn enemies");
                         enemyDensity = Random.Range(enemyMin, enemyMax);
-                        print("enemy dens" + enemyDensity);
                         isEnemyPlatform = true;
                     }
                     else
@@ -170,15 +165,13 @@ public class PlatformGenerator : MonoBehaviour
                     if (!isExitPlatform && !isHealingPlatform && !isEnemyPlatform)
                     {
                         float chance = Random.Range(0f, 3f);
-                        /*if (chance > 1.5)
-                        {*/
-                            if (chance > 1.0 && currentPlatform.transform.GetChild(0).GetComponent<MovingPlatform>() != null)
-                            {
-                                currentPlatform.transform.GetChild(0).GetComponent<MovingPlatform>().SetMoving(minHeight, maxHeight, Random.Range(platformSpeedMin, platformSpeedMax));
-                            }
-                            else
-                                currentPlatform.transform.GetChild(0).GetComponent<FallingPlatform>().SetFalling();
-                        //}
+
+                        if (chance > 1.0 && currentPlatform.transform.GetChild(0).GetComponent<MovingPlatform>() != null)
+                        {
+                            currentPlatform.transform.GetChild(0).GetComponent<MovingPlatform>().SetMoving(minHeight, maxHeight, Random.Range(platformSpeedMin, platformSpeedMax));
+                        }
+                        else
+                            currentPlatform.transform.GetChild(0).GetComponent<FallingPlatform>().SetFalling();
                         
                     }
                 }
@@ -214,15 +207,15 @@ public class PlatformGenerator : MonoBehaviour
         
     }
 
-    public void setHealingSpawnTime()
+    public void SetHealingSpawnTime()
     {
         healingSpawnTime = healingSpawnMax;
     }
-    public void setHealingDesreasing(bool decrease)
+    public void SetHealingDesreasing(bool decrease)
     {
         healingIsDecreasing = decrease;
     }
-    public float getLastHealingPoint()
+    public float GetLastHealingPoint()
     {
         return lastHealingPointX;
     }
