@@ -1,10 +1,9 @@
-﻿//fixed
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ActivatePlatform : MonoBehaviour
 {
-    public bool ControlBlinking = false;
-    public bool ExitSound = false;
+    [SerializeField] private bool _controlBlinking = false;
+    [SerializeField] private bool _exitSound = false;
 
     private GameObject _platform;
     private AudioSource _exitClip;
@@ -12,7 +11,7 @@ public class ActivatePlatform : MonoBehaviour
     private void Start()
     {
         _platform = transform.GetChild(0).gameObject;
-        if (ExitSound)
+        if (_exitSound)
             _exitClip = GetComponent<AudioSource>();
     }
 
@@ -21,9 +20,9 @@ public class ActivatePlatform : MonoBehaviour
         if (collision.gameObject.name.Equals("Character"))
         {
             _platform.SetActive(true);
-            if(ExitSound)
+            if(_exitSound)
                 _exitClip.Play();
-            if (ControlBlinking)
+            if (_controlBlinking)
                 _platform.transform.GetChild(0).GetComponent<Blinking>().StartBlinking();
         }
     }
@@ -33,9 +32,9 @@ public class ActivatePlatform : MonoBehaviour
         if (collision.gameObject.name.Equals("Character"))
         {
             _platform.SetActive(false);
-            if (ExitSound)
+            if (_exitSound)
                 _exitClip.Stop();
-            if (ControlBlinking)
+            if (_controlBlinking)
                 _platform.transform.GetChild(0).GetComponent<Blinking>().StopBlinking();
         }
     }

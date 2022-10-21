@@ -2255,9 +2255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a845f2550dce173439c27b354254ebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFalling: 1
-  spriteRenderer: {fileID: 0}
-  fallSprite: {fileID: 0}
+  _isFalling: 1
+  _spriteRenderer: {fileID: 0}
+  _fallSprite: {fileID: 0}
 --- !u!1 &1393070003
 GameObject:
   m_ObjectHideFlags: 0
@@ -2289,36 +2289,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01fa725f9ded1a40b9cb1c53ee2a220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  platforms:
-  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
-  - {fileID: 8596367891427528957, guid: 071e1a76cb77aa24ebcc225356a488f6, type: 3}
+  _platforms:
   - {fileID: 2200459457862979149, guid: 971be3a66c59cb0478b5bb7d7c71fab3, type: 3}
-  generationPoint: {fileID: 528587026}
-  distanceBetween: 5
-  distanceMin: 2
-  distanceMax: 7
-  maxHeightPoint: {fileID: 1079802072}
-  maxHeightChange: 2
-  healingSpawnCoefficient: 0.1
-  exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
+  - {fileID: 8596367891427528957, guid: 071e1a76cb77aa24ebcc225356a488f6, type: 3}
+  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
+  _generationPoint: {fileID: 528587026}
+  _maxHeightPoint: {fileID: 1079802072}
+  _distanceMin: 2
+  _distanceMax: 7
+  _maxHeightChange: 2
+  _exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
     type: 3}
-  healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
+  _healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
     type: 3}
-  intervalAmount: 3
-  spawnEnemies: 1
-  enemyMin: 0
-  enemyMax: 4
-  healingSpawnMax: 1.7
-  healingSpawnMin: 4
-  fallingPlatforms: 1
-  platformSpeedMin: 2
-  platformSpeedMax: 5
-  spawnTraps: 1
-  trapMin: 2
-  trapMax: 5
-  spawnEssence: 0
-  essenceMin: 0
-  essenceMax: 0
+  _healingSpawnCoefficient: 0.1
+  _intervalAmount: 3
+  _healingSpawnMax: 1.7
+  _healingSpawnMin: 4
+  _spawnEnemies: 1
+  _enemyMin: 0
+  _enemyMax: 4
+  _fallingPlatforms: 1
+  _platformSpeedMin: 2
+  _platformSpeedMax: 5
+  _spawnTraps: 1
+  _trapMin: 2
+  _trapMax: 5
+  _spawnEssence: 0
+  _essenceMin: 0
+  _essenceMax: 0
 --- !u!4 &1393070005
 Transform:
   m_ObjectHideFlags: 0
@@ -3153,18 +3152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60313619772706247bef516aa7dcc9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  jumpForce: 5
-  groundCheck: {fileID: 2012446270}
-  checkRadius: 0.5
-  whatIsGround:
+  _speed: 5
+  _jumpForce: 5
+  _groundCheck: {fileID: 2012446270}
+  _checkRadius: 0.5
+  _whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  extraJumpsValue: 2
-  sceneController: {fileID: 1448877266}
-  enableDash: 1
-  dashSpeed: 50
-  dashValue: 0
+  _extraJumpsValue: 2
+  _enableDash: 1
+  _dashSpeed: 50
+  _dashValue: 0
 --- !u!58 &1962442065
 CircleCollider2D:
   m_ObjectHideFlags: 0

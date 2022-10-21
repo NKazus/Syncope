@@ -6,15 +6,14 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject _pauseMenuUI;
     [SerializeField] private SceneController _sceneController;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {

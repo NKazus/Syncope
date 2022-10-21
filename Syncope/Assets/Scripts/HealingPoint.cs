@@ -1,5 +1,4 @@
-﻿//fixed
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealingPoint : MonoBehaviour
 {
@@ -8,7 +7,7 @@ public class HealingPoint : MonoBehaviour
     private float _currentHealingPointPosition;
     private AudioSource _healingSound;
 
-    void Start()
+    private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _platformGenerator = GameObject.FindGameObjectWithTag("PlatformGenerator").GetComponent<PlatformGenerator>();
@@ -35,7 +34,6 @@ public class HealingPoint : MonoBehaviour
             _healingSound.Stop();
             if((_currentHealingPointPosition == _platformGenerator.GetLastHealingPoint()) && (_player.transform.position.x > _currentHealingPointPosition))//если она последняя, и мы выходим вправо, запускаем отсчет
             {
-                print("Spawning enabled");
                 _platformGenerator.SetHealingDesreasing(true);
             }
         }

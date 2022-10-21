@@ -242,8 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dc474cd0e927940996a548ba723299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlBlinking: 0
-  exitSound: 0
+  _controlBlinking: 0
+  _exitSound: 0
 --- !u!1 &3816157492897820562
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,4 +390,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad734ae484f2f448b036d5794c07771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HealthReduction: 5
+  _healthReduction: 5

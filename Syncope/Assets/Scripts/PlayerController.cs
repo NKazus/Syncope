@@ -1,30 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed;
-    public float jumpForce;
-    public Transform groundCheck;
-    public float checkRadius;
-    public LayerMask whatIsGround;
-    public int extraJumpsValue;
-    public SceneController sceneController;
-    public bool enableDash;
-    public float dashSpeed;
-    public int dashValue;
+    [SerializeField] private float _speed = 5f;
+    [SerializeField] private float _jumpForce = 5f;
+    [SerializeField] private Transform _groundCheck;
+    [SerializeField] private float _checkRadius = 0.5f;
+    [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private int _extraJumpsValue = 1; //2+.2
+    [SerializeField] private bool _enableDash = false; //4+.true
+    [SerializeField] private float _dashSpeed = 50f; //4+.50
+    [SerializeField] private int _dashValue = 0; //5+.1
 
-    private float moveInput;
-    private bool facingRight = true;
-    private bool isGrounded;
-    private int extraJumps;
-    private Rigidbody2D rb;
-    private bool canHide = false;
-    private SpriteRenderer rend;
-    private HealthBar health;
-    private float dash = 0f;
-    private int extraDashes;
+    private float _moveInput;
+    private bool _facingRight = true;
+    private bool _isGrounded;
+    private int _extraJumps;
+    private Rigidbody2D _playerRigidBody;
+    private bool _canHide = false;
+    private SpriteRenderer _rend;
+    private HealthBar _health;
+    private float _dash = 0f;
+    private int _extraDashes;
 
     private void Awake()
     {
@@ -32,35 +29,35 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        extraJumps = extraJumpsValue;
-        rb = GetComponent<Rigidbody2D>();
-        rend = GetComponent<SpriteRenderer>();
-        health = GetComponent<HealthBar>();
-        if (enableDash)
-            extraDashes = dashValue;
+        _extraJumps = _extraJumpsValue;
+        _playerRigidBody = GetComponent<Rigidbody2D>();
+        _rend = GetComponent<SpriteRenderer>();
+        _health = GetComponent<HealthBar>();
+        if (_enableDash)
+            _extraDashes = _dashValue;
     }
 
     private void Update()
     {
-        if (isGrounded)
+        if (_isGrounded)
         {
-            extraJumps = extraJumpsValue;
-            extraDashes = dashValue;
+            _extraJumps = _extraJumpsValue;
+            _extraDashes = _dashValue;
         }
             
-        if (Input.GetKeyDown(KeyCode.Space) && extraJumps > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && _extraJumps > 0)
         {
-            rb.velocity = Vector2.up * jumpForce;
-            extraJumps--;
+            _playerRigidBody.velocity = Vector2.up * _jumpForce;
+            _extraJumps--;
         }
-        else if(Input.GetKeyDown(KeyCode.Space) && extraJumps == 0 && isGrounded)
-            rb.velocity = Vector2.up * jumpForce;
-        if (enableDash)
+        else if(Input.GetKeyDown(KeyCode.Space) && _extraJumps == 0 && _isGrounded)
+            _playerRigidBody.velocity = Vector2.up * _jumpForce;
+        if (_enableDash)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && extraDashes >=0)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && _extraDashes >= 0)
             {
-                dash = dashSpeed;
-                extraDashes--;
+                _dash = _dashSpeed;
+                _extraDashes--;
             }
         }
         if (transform.position.y < -5f)
@@ -69,19 +66,19 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        moveInput = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
-        rb.AddForce(new Vector2(moveInput * dash, 0), ForceMode2D.Impulse);
-        if (dash > 0f)
-            dash = 0f;
-        if ((!facingRight && moveInput > 0) || (facingRight && moveInput < 0))
+        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _whatIsGround);
+        _moveInput = Input.GetAxis("Horizontal");
+        _playerRigidBody.velocity = new Vector2(_moveInput * _speed, _playerRigidBody.velocity.y);
+        _playerRigidBody.AddForce(new Vector2(_moveInput * _dash, 0), ForceMode2D.Impulse);
+        if (_dash > 0f)
+            _dash = 0f;
+        if ((!_facingRight && _moveInput > 0) || (_facingRight && _moveInput < 0))
             Flip();
     }
 
     private void Flip()
     {
-        facingRight = !facingRight;
+        _facingRight = !_facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
@@ -89,27 +86,27 @@ public class PlayerController : MonoBehaviour
 
     public void SetHiding(bool enableHiding)
     {
-        canHide = enableHiding;
-        if (canHide)
+        _canHide = enableHiding;
+        if (_canHide)
         {
             Physics2D.IgnoreLayerCollision(9, 10, true);
-            rend.sortingOrder = 0;
-            health.setFillCoefficient(-10f);
+            _rend.sortingOrder = 0;
+            _health.setFillCoefficient(-10f);
         }
         else
         {
             Physics2D.IgnoreLayerCollision(9, 10, false);
-            rend.sortingOrder = 2;
-            health.setFillCoefficient(1f);
+            _rend.sortingOrder = 2;
+            _health.setFillCoefficient(1f);
         }
     }
 
     private void AffectedByEnemy(bool decreasing)
     {
         if (decreasing)
-            health.setFillCoefficient(3f);//сильнее убывает хп
+            _health.setFillCoefficient(3f);//сильнее убывает хп
         else
-            health.setFillCoefficient(1f);
+            _health.setFillCoefficient(1f);
     }
        
 }

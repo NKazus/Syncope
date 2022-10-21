@@ -1,5 +1,4 @@
-﻿//fixed
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Fading : MonoBehaviour
 {
@@ -10,7 +9,6 @@ public class Fading : MonoBehaviour
     private Color _color;
     private HealthBar _health;
 
-    // Start is called before the first frame update
     private void Start()
     {
         _character = GetComponent<SpriteRenderer>();
@@ -18,7 +16,6 @@ public class Fading : MonoBehaviour
         _health = GetComponent<HealthBar>();
     }
 
-    // Update is called once per frame
     private void Update()
     {
         _color.a = Mathf.Log((_health.getFill()+ _additionCoefficient) * (_health.getFill() + _additionCoefficient))/ _divisionCoefficient;

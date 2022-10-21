@@ -1,5 +1,4 @@
-﻿//fixed
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ShowHint : MonoBehaviour
 {
@@ -26,7 +25,9 @@ public class ShowHint : MonoBehaviour
             _wasShown = true;
         }
         else
+        {
             _wasShown = false;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

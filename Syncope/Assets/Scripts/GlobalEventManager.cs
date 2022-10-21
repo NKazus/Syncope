@@ -1,4 +1,3 @@
-//fixed
 using UnityEngine.Events;
 
 public class GlobalEventManager

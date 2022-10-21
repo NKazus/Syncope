@@ -1,56 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Sprite moveSprite;
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private bool _isMoving = false;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    [SerializeField] private Sprite _moveSprite;
 
-    private Vector2 topPosition;
-    private Vector2 bottomPosition;
-    private bool moveUp = false;
-    //private bool moveDown = false;
-    private bool isMoving = false;
-    private float movingSpeed;
+    private Vector2 _topPosition;
+    private Vector2 _bottomPosition;
+    private bool _moveUp = false;
+    private float _movingSpeed;
 
-    // Update is called once per frame
     private void Update()
     {
-        if (isMoving)
+        if (_isMoving)
         {
-            print("isMoving");
 
-            if (transform.position.y >= topPosition.y)
+            if (transform.position.y >= _topPosition.y)
             {
-                moveUp = false;
-                //moveDown = true;
+                _moveUp = false;
             }
-            if (transform.position.y <= bottomPosition.y)
+            if (transform.position.y <= _bottomPosition.y)
             {
-                //moveDown = false;
-                moveUp = true;
+                _moveUp = true;
             }
-            if (moveUp)
+            if (_moveUp)
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y + movingSpeed * Time.deltaTime);
-                print("moveUp");
+                transform.position = new Vector2(transform.position.x, transform.position.y + _movingSpeed * Time.deltaTime);
                 
             }
             else
             {
-                transform.position = new Vector2(transform.position.x, transform.position.y - movingSpeed * Time.deltaTime);
+                transform.position = new Vector2(transform.position.x, transform.position.y - _movingSpeed * Time.deltaTime);
             }
         }
     }
 
     public void SetMoving(float minHeight, float maxHeight, float moveSpeed)
     {
-        isMoving = true;
-        moveUp = true;
-        topPosition = new Vector2(transform.position.x, maxHeight + 0.5f);
-        bottomPosition = new Vector2(transform.position.x, minHeight - 0.5f);
-        movingSpeed = moveSpeed;
-        spriteRenderer.sprite = moveSprite;
+        _isMoving = true;
+        _moveUp = true;
+        _topPosition = new Vector2(transform.position.x, maxHeight + 0.5f);
+        _bottomPosition = new Vector2(transform.position.x, minHeight - 0.5f);
+        _movingSpeed = moveSpeed;
+        _spriteRenderer.sprite = _moveSprite;
     }
 }

@@ -1,5 +1,4 @@
-﻿//fixed
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EssenceGenerator : MonoBehaviour
 {
