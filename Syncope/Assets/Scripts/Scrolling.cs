@@ -2,10 +2,10 @@
 
 public class Scrolling : MonoBehaviour
 {
-    public float BackgroundSize = 57.5f;
-    public float ParallaxSpeed = 0.5f;
-    public bool Scroll = true;
-    public bool Parallax = true;
+    [SerializeField] private float backgroundSize = 57.5f;
+    [SerializeField] private float parallaxSpeed = 0.5f;
+    [SerializeField] private bool scroll = true;
+    [SerializeField] private bool parallax = true;
 
     private Transform _cameraTransform;
     private Transform[] _layers;
@@ -29,13 +29,13 @@ public class Scrolling : MonoBehaviour
 
     private void Update()
     {
-        if (Parallax)
+        if (parallax)
         {
             float deltaX = _cameraTransform.position.x - _lastCameraX;
-            transform.position += Vector3.right * (deltaX * ParallaxSpeed);
+            transform.position += Vector3.right * (deltaX * parallaxSpeed);
         }
         _lastCameraX = _cameraTransform.position.x;
-        if (Scroll)
+        if (scroll)
         {
             if (_cameraTransform.position.x < (_layers[_leftIndex].transform.position.x + _viewZone / 2f))
             {
@@ -51,7 +51,7 @@ public class Scrolling : MonoBehaviour
     private void ScrollLeft()
     {
         int lastRight = _rightIndex;
-        _layers[_rightIndex].position = Vector3.right * (_layers[_leftIndex].position.x - BackgroundSize);
+        _layers[_rightIndex].position = Vector3.right * (_layers[_leftIndex].position.x - backgroundSize);
         _leftIndex = _rightIndex;
         _rightIndex--;
         if (_rightIndex < 0)
@@ -61,7 +61,7 @@ public class Scrolling : MonoBehaviour
     private void ScrollRight()
     {
         int lastLeft = _leftIndex;
-        _layers[_leftIndex].position = Vector3.right * (_layers[_rightIndex].position.x + BackgroundSize);
+        _layers[_leftIndex].position = Vector3.right * (_layers[_rightIndex].position.x + backgroundSize);
         _rightIndex = _leftIndex;
         _leftIndex++;
         if (_leftIndex == _layers.Length)

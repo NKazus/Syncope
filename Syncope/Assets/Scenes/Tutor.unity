@@ -585,8 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a13a3a61931944920157c3365431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damping: 1.5
-  _offset: {x: 2, y: 1}
+  damping: 1.5
+  offset: {x: 2, y: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -804,8 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae67d5435a3bad4a82c43894d01b873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hintPanel: {fileID: 188871528}
-  _sceneController: {fileID: 1448877266}
+  hintPanel: {fileID: 188871528}
+  sceneController: {fileID: 1448877266}
 --- !u!61 &558325118
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1063,8 +1063,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f7b9c632721f4fb43b5f56e837a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenuUI: {fileID: 1297869636}
-  _sceneController: {fileID: 1448877266}
+  pauseMenuUI: {fileID: 1297869636}
+  sceneController: {fileID: 1448877266}
 --- !u!1001 &837251791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1335,10 +1335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundSize: 57.5
-  ParallaxSpeed: 0.9
-  Scroll: 1
-  Parallax: 1
+  backgroundSize: 57.5
+  parallaxSpeed: 0.9
+  scroll: 1
+  parallax: 1
 --- !u!4 &991268177
 Transform:
   m_ObjectHideFlags: 0
@@ -1796,35 +1796,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01fa725f9ded1a40b9cb1c53ee2a220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platforms:
-  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
+  platforms:
   - {fileID: 8596367891427528957, guid: 071e1a76cb77aa24ebcc225356a488f6, type: 3}
   - {fileID: 2200459457862979149, guid: 971be3a66c59cb0478b5bb7d7c71fab3, type: 3}
-  _generationPoint: {fileID: 528587026}
-  _maxHeightPoint: {fileID: 1079802072}
-  _distanceMin: 3
-  _distanceMax: 5
-  _maxHeightChange: 2
-  _exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
+  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
+  generationPoint: {fileID: 528587026}
+  maxHeightPoint: {fileID: 1079802072}
+  distanceMin: 3
+  distanceMax: 5
+  maxHeightChange: 2
+  exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
     type: 3}
-  _healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
+  healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
     type: 3}
-  _healingSpawnCoefficient: 0.1
-  _intervalAmount: 0
-  _healingSpawnMax: 1
-  _healingSpawnMin: 4
-  _spawnEnemies: 0
-  _enemyMin: 0
-  _enemyMax: 0
-  _fallingPlatforms: 0
-  _platformSpeedMin: 0
-  _platformSpeedMax: 0
-  _spawnTraps: 0
-  _trapMin: 0
-  _trapMax: 0
-  _spawnEssence: 0
-  _essenceMin: 0
-  _essenceMax: 0
+  healingSpawnCoefficient: 0.1
+  intervalAmount: 1
+  healingSpawnMax: 1
+  healingSpawnMin: 4
+  spawnEnemies: 0
+  enemyMin: 0
+  enemyMax: 4
+  fallingPlatforms: 0
+  platformSpeedMin: 2
+  platformSpeedMax: 5
+  spawnTraps: 0
+  trapMin: 2
+  trapMax: 5
+  spawnEssence: 0
+  essenceMin: 3
+  essenceMax: 4
 --- !u!4 &1393070005
 Transform:
   m_ObjectHideFlags: 0
@@ -1968,8 +1968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbed6b6037e0a344487cfab0acdfa689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingScreen: {fileID: 1888971392}
-  _loadingText: {fileID: 2101958317}
+  loadingScreen: {fileID: 1888971392}
+  loadingText: {fileID: 2101958317}
 --- !u!4 &1448877267
 Transform:
   m_ObjectHideFlags: 0
@@ -2111,10 +2111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundSize: 57.5
-  ParallaxSpeed: 0.5
-  Scroll: 1
-  Parallax: 1
+  backgroundSize: 57.5
+  parallaxSpeed: 0.5
+  scroll: 1
+  parallax: 1
 --- !u!4 &1496827704
 Transform:
   m_ObjectHideFlags: 0
@@ -2916,17 +2916,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60313619772706247bef516aa7dcc9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpForce: 5
-  _groundCheck: {fileID: 2012446270}
-  _checkRadius: 0.5
-  _whatIsGround:
+  speed: 5
+  jumpForce: 5
+  groundCheck: {fileID: 2012446270}
+  checkRadius: 0.5
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  _extraJumpsValue: 1
-  _enableDash: 0
-  _dashSpeed: 50
-  _dashValue: 0
+  extraJumpsValue: 1
+  enableDash: 0
+  dashSpeed: 50
+  dashValue: 0
 --- !u!58 &1962442065
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3045,8 +3045,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bd90b3478f1d54694b573131e44adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 31591523}
-  _timeScale: 0.02
+  bar: {fileID: 31591523}
+  timeScale: 0.02
 --- !u!114 &1962442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3059,8 +3059,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b4b87c2929e0f4480523211d25c7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _additionCoefficient: 2
-  _divisionCoefficient: 2.2
+  additionCoefficient: 2
+  divisionCoefficient: 2.2
 --- !u!95 &1962442071
 Animator:
   serializedVersion: 4

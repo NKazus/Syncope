@@ -595,10 +595,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundSize: 57.5
-  ParallaxSpeed: 0.5
-  Scroll: 1
-  Parallax: 1
+  backgroundSize: 57.5
+  parallaxSpeed: 0.5
+  scroll: 1
+  parallax: 1
 --- !u!4 &178802759
 Transform:
   m_ObjectHideFlags: 0
@@ -669,8 +669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a13a3a61931944920157c3365431e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damping: 1.5
-  _offset: {x: 2, y: 1}
+  damping: 1.5
+  offset: {x: 2, y: 1}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1466,8 +1466,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 893f7b9c632721f4fb43b5f56e837a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenuUI: {fileID: 2085941575}
-  _sceneController: {fileID: 1448877266}
+  pauseMenuUI: {fileID: 2085941575}
+  sceneController: {fileID: 1448877266}
 --- !u!1001 &837251791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1696,10 +1696,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3e2af5e524db248a5c2229fb21cc87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BackgroundSize: 57.5
-  ParallaxSpeed: 0.9
-  Scroll: 1
-  Parallax: 1
+  backgroundSize: 57.5
+  parallaxSpeed: 0.9
+  scroll: 1
+  parallax: 1
 --- !u!4 &991268177
 Transform:
   m_ObjectHideFlags: 0
@@ -2394,35 +2394,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d01fa725f9ded1a40b9cb1c53ee2a220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _platforms:
-  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
+  platforms:
   - {fileID: 8596367891427528957, guid: 071e1a76cb77aa24ebcc225356a488f6, type: 3}
   - {fileID: 2200459457862979149, guid: 971be3a66c59cb0478b5bb7d7c71fab3, type: 3}
-  _generationPoint: {fileID: 528587026}
-  _maxHeightPoint: {fileID: 1079802072}
-  _distanceMin: 2
-  _distanceMax: 7
-  _maxHeightChange: 2
-  _exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
+  - {fileID: 8075313405231257524, guid: 7824ff4ab98ab2c458f7a246fc7aba73, type: 3}
+  generationPoint: {fileID: 528587026}
+  maxHeightPoint: {fileID: 1079802072}
+  distanceMin: 2
+  distanceMax: 7
+  maxHeightChange: 2
+  exitPoint: {fileID: 4291861423152998315, guid: d2d10a527c80fb441bf80ce0d8f330a8,
     type: 3}
-  _healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
+  healingPoint: {fileID: 6352673941850395501, guid: 3add8a8e1b0620642b2063c1db4c746a,
     type: 3}
-  _healingSpawnCoefficient: 0.1
-  _intervalAmount: 4
-  _healingSpawnMax: 3.5
-  _healingSpawnMin: 4
-  _spawnEnemies: 1
-  _enemyMin: 0
-  _enemyMax: 4
-  _fallingPlatforms: 1
-  _platformSpeedMin: 2
-  _platformSpeedMax: 5
-  _spawnTraps: 1
-  _trapMin: 2
-  _trapMax: 5
-  _spawnEssence: 1
-  _essenceMin: 3
-  _essenceMax: 4
+  healingSpawnCoefficient: 0.1
+  intervalAmount: 4
+  healingSpawnMax: 3.5
+  healingSpawnMin: 4
+  spawnEnemies: 1
+  enemyMin: 0
+  enemyMax: 4
+  fallingPlatforms: 1
+  platformSpeedMin: 2
+  platformSpeedMax: 5
+  spawnTraps: 1
+  trapMin: 2
+  trapMax: 5
+  spawnEssence: 1
+  essenceMin: 3
+  essenceMax: 4
 --- !u!4 &1393070005
 Transform:
   m_ObjectHideFlags: 0
@@ -2451,10 +2451,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf17b3f3902d3ab47ae96b1297a5ce74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemies:
+  enemies:
   - {fileID: 1121969085418758471, guid: 2d6815fd36ae2ff41a3941d9199906fd, type: 3}
-  _speedMin: 0.5
-  _speedMax: 6
+  speedMin: 0.5
+  speedMax: 6
 --- !u!114 &1393070007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2467,13 +2467,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82b866e97cf5055409d7ffa6d66f36a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _traps:
+  traps:
   - {fileID: 3816157492715937516, guid: ea249cb621f3d194cabfed682d9a045e, type: 3}
   - {fileID: 3816157492715937516, guid: 3ae1fb83a4385ce419ea9c3a5f01b009, type: 3}
   - {fileID: 3816157492715937516, guid: 3ad40056138f5974a9780d1d27fb65b6, type: 3}
-  _trapDelta: 5
-  _minGravity: 2
-  _maxGravity: 4
+  trapDelta: 5
+  minGravity: 2
+  maxGravity: 4
 --- !u!114 &1393070008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2486,13 +2486,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fda227847683714998d13b1e2cb66bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _essences:
+  essences:
   - {fileID: 3507225469751411777, guid: 596e68c57b8b7be4e86a3537f34e3c81, type: 3}
   - {fileID: 3507225469751411777, guid: 01ff7f97db086024583db3dcfaf3c315, type: 3}
   - {fileID: 3507225469751411777, guid: ba56951f3de2b714d940b284e295c81b, type: 3}
-  _essenceDelta: 8
-  _minHeight: 2
-  _maxHeight: 4
+  essenceDelta: 8
+  minHeight: 2
+  maxHeight: 4
 --- !u!1 &1448877265
 GameObject:
   m_ObjectHideFlags: 0
@@ -2524,8 +2524,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbed6b6037e0a344487cfab0acdfa689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingScreen: {fileID: 967371192}
-  _loadingText: {fileID: 1998720566}
+  loadingScreen: {fileID: 967371192}
+  loadingText: {fileID: 1998720566}
 --- !u!4 &1448877267
 Transform:
   m_ObjectHideFlags: 0
@@ -2686,8 +2686,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae67d5435a3bad4a82c43894d01b873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hintPanel: {fileID: 148296268}
-  _sceneController: {fileID: 1448877266}
+  hintPanel: {fileID: 148296268}
+  sceneController: {fileID: 1448877266}
 --- !u!61 &1596862282
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2884,17 +2884,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60313619772706247bef516aa7dcc9f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
-  _jumpForce: 5
-  _groundCheck: {fileID: 2012446270}
-  _checkRadius: 0.5
-  _whatIsGround:
+  speed: 5
+  jumpForce: 5
+  groundCheck: {fileID: 2012446270}
+  checkRadius: 0.5
+  whatIsGround:
     serializedVersion: 2
     m_Bits: 256
-  _extraJumpsValue: 2
-  _enableDash: 1
-  _dashSpeed: 50
-  _dashValue: 1
+  extraJumpsValue: 2
+  enableDash: 1
+  dashSpeed: 50
+  dashValue: 1
 --- !u!58 &1962442065
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -3013,8 +3013,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90bd90b3478f1d54694b573131e44adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bar: {fileID: 31591523}
-  _timeScale: 0.02
+  bar: {fileID: 31591523}
+  timeScale: 0.02
 --- !u!114 &1962442070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3027,8 +3027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b4b87c2929e0f4480523211d25c7ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _additionCoefficient: 2
-  _divisionCoefficient: 2.2
+  additionCoefficient: 2
+  divisionCoefficient: 2.2
 --- !u!95 &1962442071
 Animator:
   serializedVersion: 4

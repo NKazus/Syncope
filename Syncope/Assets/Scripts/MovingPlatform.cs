@@ -2,9 +2,9 @@
 
 public class MovingPlatform : MonoBehaviour
 {
-    [SerializeField] private bool _isMoving = false;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
-    [SerializeField] private Sprite _moveSprite;
+    [SerializeField] private bool isMoving = false;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite moveSprite;
 
     private Vector2 _topPosition;
     private Vector2 _bottomPosition;
@@ -13,7 +13,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        if (_isMoving)
+        if (isMoving)
         {
 
             if (transform.position.y >= _topPosition.y)
@@ -38,11 +38,11 @@ public class MovingPlatform : MonoBehaviour
 
     public void SetMoving(float minHeight, float maxHeight, float moveSpeed)
     {
-        _isMoving = true;
+        isMoving = true;
         _moveUp = true;
         _topPosition = new Vector2(transform.position.x, maxHeight + 0.5f);
         _bottomPosition = new Vector2(transform.position.x, minHeight - 0.5f);
         _movingSpeed = moveSpeed;
-        _spriteRenderer.sprite = _moveSprite;
+        spriteRenderer.sprite = moveSprite;
     }
 }

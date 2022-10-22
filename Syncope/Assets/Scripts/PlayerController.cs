@@ -2,15 +2,15 @@
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float _speed = 5f;
-    [SerializeField] private float _jumpForce = 5f;
-    [SerializeField] private Transform _groundCheck;
-    [SerializeField] private float _checkRadius = 0.5f;
-    [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private int _extraJumpsValue = 1; //2+.2
-    [SerializeField] private bool _enableDash = false; //4+.true
-    [SerializeField] private float _dashSpeed = 50f; //4+.50
-    [SerializeField] private int _dashValue = 0; //5+.1
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private float checkRadius = 0.5f;
+    [SerializeField] private LayerMask whatIsGround;
+    [SerializeField] private int extraJumpsValue = 1; //2+.2
+    [SerializeField] private bool enableDash = false; //4+.true
+    [SerializeField] private float dashSpeed = 50f; //4+.50
+    [SerializeField] private int dashValue = 0; //5+.1
 
     private float _moveInput;
     private bool _facingRight = true;
@@ -29,34 +29,34 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
-        _extraJumps = _extraJumpsValue;
+        _extraJumps = extraJumpsValue;
         _playerRigidBody = GetComponent<Rigidbody2D>();
         _rend = GetComponent<SpriteRenderer>();
         _health = GetComponent<HealthBar>();
-        if (_enableDash)
-            _extraDashes = _dashValue;
+        if (enableDash)
+            _extraDashes = dashValue;
     }
 
     private void Update()
     {
         if (_isGrounded)
         {
-            _extraJumps = _extraJumpsValue;
-            _extraDashes = _dashValue;
+            _extraJumps = extraJumpsValue;
+            _extraDashes = dashValue;
         }
             
         if (Input.GetKeyDown(KeyCode.Space) && _extraJumps > 0)
         {
-            _playerRigidBody.velocity = Vector2.up * _jumpForce;
+            _playerRigidBody.velocity = Vector2.up * jumpForce;
             _extraJumps--;
         }
         else if(Input.GetKeyDown(KeyCode.Space) && _extraJumps == 0 && _isGrounded)
-            _playerRigidBody.velocity = Vector2.up * _jumpForce;
-        if (_enableDash)
+            _playerRigidBody.velocity = Vector2.up * jumpForce;
+        if (enableDash)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && _extraDashes >= 0)
             {
-                _dash = _dashSpeed;
+                _dash = dashSpeed;
                 _extraDashes--;
             }
         }
@@ -66,9 +66,9 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _isGrounded = Physics2D.OverlapCircle(_groundCheck.position, _checkRadius, _whatIsGround);
+        _isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
         _moveInput = Input.GetAxis("Horizontal");
-        _playerRigidBody.velocity = new Vector2(_moveInput * _speed, _playerRigidBody.velocity.y);
+        _playerRigidBody.velocity = new Vector2(_moveInput * speed, _playerRigidBody.velocity.y);
         _playerRigidBody.AddForce(new Vector2(_moveInput * _dash, 0), ForceMode2D.Impulse);
         if (_dash > 0f)
             _dash = 0f;

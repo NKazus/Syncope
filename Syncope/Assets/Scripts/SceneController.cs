@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private GameObject _loadingScreen;
-    [SerializeField] private GameObject _loadingText;
+    [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject loadingText;
 
     private int _levelComplete;
     private int _sceneIndex;
@@ -30,7 +30,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadLevel(int index)
     {
-        _loadingScreen.SetActive(true);
+        loadingScreen.SetActive(true);
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         if (!_loaded)
@@ -52,7 +52,7 @@ public class SceneController : MonoBehaviour
         {
             PlayerPrefs.SetInt("LevelComplete", _sceneIndex);
         }
-        _loadingScreen.SetActive(true);
+        loadingScreen.SetActive(true);
         if (_sceneIndex < 5)
             StartCoroutine(LoadAsync(_sceneIndex + 1));
         else
@@ -72,7 +72,7 @@ public class SceneController : MonoBehaviour
         {
             if (asyncLoad.progress >= 0.9f && !asyncLoad.allowSceneActivation)
             {
-                _loadingText.SetActive(true);
+                loadingText.SetActive(true);
                 if (Input.anyKeyDown)
                     asyncLoad.allowSceneActivation = true;
             }

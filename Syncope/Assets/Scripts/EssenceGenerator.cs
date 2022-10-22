@@ -2,10 +2,10 @@
 
 public class EssenceGenerator : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _essences;
-    [SerializeField] private float _essenceDelta = 8f;
-    [SerializeField] private float _minHeight = 2f;//высота над платформой
-    [SerializeField] private float _maxHeight = 4f;
+    [SerializeField] private GameObject[] essences;
+    [SerializeField] private float essenceDelta = 8f;
+    [SerializeField] private float minHeight = 2f;//высота над платформой
+    [SerializeField] private float maxHeight = 4f;
 
     private int _essenceSelector;
     private float _offset;
@@ -27,10 +27,10 @@ public class EssenceGenerator : MonoBehaviour
 
     public void SpawnEssence()
     {
-        _essenceSelector = Random.Range(0, _essences.Length);
-        _offset = Random.Range(-_essenceDelta, _essenceDelta);
-        _height = Random.Range(_minHeight, _maxHeight);
-        GameObject currentEssence = PoolManager.getGameObjectFromPool(_essences[_essenceSelector]);
+        _essenceSelector = Random.Range(0, essences.Length);
+        _offset = Random.Range(-essenceDelta, essenceDelta);
+        _height = Random.Range(minHeight, maxHeight);
+        GameObject currentEssence = PoolManager.getGameObjectFromPool(essences[_essenceSelector]);
         currentEssence.transform.position = new Vector3(_spawnPositionX + _offset, _spawnPositionY + _platformHeight + _height, 0);
     }
 }

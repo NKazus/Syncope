@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35dc474cd0e927940996a548ba723299, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controlBlinking: 0
-  _exitSound: 0
+  controlBlinking: 0
+  exitSound: 0
 --- !u!1 &8771959777970863947
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,6 +252,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a845f2550dce173439c27b354254ebe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isFalling: 0
-  _spriteRenderer: {fileID: 6263956967136000465}
-  _fallSprite: {fileID: 21300000, guid: 0db7b3550a5c9ab40b028bd8d1a7d2c7, type: 3}
+  isFalling: 0
+  spriteRenderer: {fileID: 6263956967136000465}
+  fallSprite: {fileID: 21300000, guid: 0db7b3550a5c9ab40b028bd8d1a7d2c7, type: 3}

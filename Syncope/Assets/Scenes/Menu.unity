@@ -7037,18 +7037,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e06f5f2359712449d3e77926f76e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levels:
+  levels:
   - {fileID: 39367792}
   - {fileID: 1331519589}
   - {fileID: 215946082}
   - {fileID: 1341447100}
-  _gDropDown: {fileID: 2132345890}
-  _rDropDown: {fileID: 178752106}
-  _wToggle: {fileID: 407392987}
-  _mixer: {fileID: 24300002, guid: d115f43fcaa17934b872db9279c3ad19, type: 2}
-  _mToggle: {fileID: 1357591676}
-  _volume: {fileID: 1171872571}
-  _effects: {fileID: 1308478148}
+  gDropDown: {fileID: 2132345890}
+  rDropDown: {fileID: 178752106}
+  wToggle: {fileID: 407392987}
+  mixer: {fileID: 24300002, guid: d115f43fcaa17934b872db9279c3ad19, type: 2}
+  mToggle: {fileID: 1357591676}
+  volume: {fileID: 1171872571}
+  effects: {fileID: 1308478148}
 --- !u!82 &1861531601
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7158,8 +7158,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbed6b6037e0a344487cfab0acdfa689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _loadingScreen: {fileID: 1844246353}
-  _loadingText: {fileID: 1484144307}
+  loadingScreen: {fileID: 1844246353}
+  loadingText: {fileID: 1484144307}
 --- !u!1 &1868700674
 GameObject:
   m_ObjectHideFlags: 0

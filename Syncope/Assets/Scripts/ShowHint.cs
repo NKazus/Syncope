@@ -2,15 +2,15 @@
 
 public class ShowHint : MonoBehaviour
 {
-    [SerializeField] private GameObject _hintPanel;
-    [SerializeField] private SceneController _sceneController;
+    [SerializeField] private GameObject hintPanel;
+    [SerializeField] private SceneController sceneController;
 
     private bool _wasShown;
     private string _sceneHintKey;
 
     private void Start()
     {
-        int sceneIndex = _sceneController.GetSceneIndex();
+        int sceneIndex = sceneController.GetSceneIndex();
         switch (sceneIndex)
         {
             case 1: _sceneHintKey = "ShowHint1"; break;
@@ -34,7 +34,7 @@ public class ShowHint : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Character") && !_wasShown)
         {
-            _hintPanel.SetActive(true);
+            hintPanel.SetActive(true);
             Time.timeScale = 0f;
             _wasShown = true;
             PlayerPrefs.SetInt(_sceneHintKey, 1);
@@ -45,7 +45,7 @@ public class ShowHint : MonoBehaviour
 
     public void HideHint()
     {
-        _hintPanel.SetActive(false);
+        hintPanel.SetActive(false);
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

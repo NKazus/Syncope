@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Image _bar;//изменяющееся изображение
-    [SerializeField] private float _timeScale=0.02f;//стандартная скорость изменения
+    [SerializeField] private Image bar;//изменяющееся изображение
+    [SerializeField] private float timeScale=0.02f;//стандартная скорость изменения
 
     private float _fill;//процентное количество хп [0,1]
     private float _fillCoefficient;//изменение от врагов и хилок [+2/-2]
@@ -24,8 +24,8 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
-        _fill = Mathf.Clamp(_fill - Time.deltaTime*_timeScale*_fillCoefficient,0f,1f);
-        _bar.fillAmount = _fill;
+        _fill = Mathf.Clamp(_fill - Time.deltaTime*timeScale*_fillCoefficient,0f,1f);
+        bar.fillAmount = _fill;
         if (_fill <= 0)
             GlobalEventManager.RestartScene();
     }

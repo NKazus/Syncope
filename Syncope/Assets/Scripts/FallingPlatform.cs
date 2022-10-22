@@ -2,9 +2,9 @@
 
 public class FallingPlatform : MonoBehaviour
 {
-    [SerializeField] private bool _isFalling = false;//врубать этот скрипт или нет
-    [SerializeField] private SpriteRenderer _spriteRenderer;//компонент дочернего объекта, то есть самого спрайта платформы
-    [SerializeField] private Sprite _fallSprite;//альтернативная версия спрайта для падающей платформы
+    [SerializeField] private bool isFalling = false;//врубать этот скрипт или нет
+    [SerializeField] private SpriteRenderer spriteRenderer;//компонент дочернего объекта, то есть самого спрайта платформы
+    [SerializeField] private Sprite fallSprite;//альтернативная версия спрайта для падающей платформы
 
     private Rigidbody2D _platformRigidBody;
     private Vector2 _initialPosition;
@@ -18,7 +18,7 @@ public class FallingPlatform : MonoBehaviour
 
     private void Update()
     {
-        if (_isFalling)
+        if (isFalling)
         {
             if (_movingBack)
             {
@@ -41,7 +41,7 @@ public class FallingPlatform : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_isFalling)
+        if (isFalling)
         {
             if (collision.gameObject.name.Equals("Character") && !_movingBack)
             {
@@ -58,7 +58,7 @@ public class FallingPlatform : MonoBehaviour
 
     public void SetFalling()
     {
-        _isFalling = true;
-        _spriteRenderer.sprite = _fallSprite;
+        isFalling = true;
+        spriteRenderer.sprite = fallSprite;
     }
 }

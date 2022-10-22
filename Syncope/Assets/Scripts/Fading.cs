@@ -2,8 +2,8 @@
 
 public class Fading : MonoBehaviour
 {
-    [SerializeField] private float _additionCoefficient = 2f;
-    [SerializeField] private float _divisionCoefficient = 2.2f;
+    [SerializeField] private float additionCoefficient = 2f;
+    [SerializeField] private float divisionCoefficient = 2.2f;
 
     private SpriteRenderer _character;
     private Color _color;
@@ -18,7 +18,7 @@ public class Fading : MonoBehaviour
 
     private void Update()
     {
-        _color.a = Mathf.Log((_health.getFill()+ _additionCoefficient) * (_health.getFill() + _additionCoefficient))/ _divisionCoefficient;
+        _color.a = Mathf.Log((_health.getFill()+ additionCoefficient) * (_health.getFill() + additionCoefficient))/ divisionCoefficient;
         _character.material.color = _color;
     }
 }

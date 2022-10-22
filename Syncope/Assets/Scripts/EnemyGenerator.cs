@@ -2,9 +2,9 @@
 
 public class EnemyGenerator:MonoBehaviour
 {
-    [SerializeField] private GameObject[] _enemies;//список префабов врагов
-    [SerializeField] private float _speedMin=0.5f;
-    [SerializeField] private float _speedMax=6f;
+    [SerializeField] private GameObject[] enemies;//список префабов врагов
+    [SerializeField] private float speedMin=0.5f;
+    [SerializeField] private float speedMax=6f;
 
     private float _speed;//скорость врага
     private float _spawnPositionX;//середина платформы
@@ -30,10 +30,10 @@ public class EnemyGenerator:MonoBehaviour
 
     public void SpawnEnemy()
     {
-        _enemySelector = Random.Range(0, _enemies.Length);
-        _speed = Random.Range(_speedMin, _speedMax);
-        GameObject currentEnemy = Instantiate(_enemies[_enemySelector],
-            new Vector3(_spawnPositionX, _spawnPositionY + _platformHeight + _enemies[_enemySelector].transform.GetChild(0).GetComponent<CircleCollider2D>().radius + 0.5f,0),transform.rotation);
+        _enemySelector = Random.Range(0, enemies.Length);
+        _speed = Random.Range(speedMin, speedMax);
+        GameObject currentEnemy = Instantiate(enemies[_enemySelector],
+            new Vector3(_spawnPositionX, _spawnPositionY + _platformHeight + enemies[_enemySelector].transform.GetChild(0).GetComponent<CircleCollider2D>().radius + 0.5f,0),transform.rotation);
         currentEnemy.transform.GetChild(0).GetComponent<EnemyController>().SetEnemyParameters(_speed, _leftBorder, _rightBorder);
     }
 }

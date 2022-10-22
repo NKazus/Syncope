@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class TrapController : MonoBehaviour
 {
-    [SerializeField] private int _healthReduction;//какой кусок хп сносит ловушка
+    [SerializeField] private int healthReduction = 2;//какой кусок хп сносит ловушка
 
     private Rigidbody2D _trapRigidBody;
     private bool _volumeCheck = false;
@@ -31,7 +31,7 @@ public class TrapController : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Character"))
         {
-           GlobalEventManager.ChangePlayerHealth((-1)*_healthReduction);
+           GlobalEventManager.ChangePlayerHealth((-1)*healthReduction);
         }
     }
 

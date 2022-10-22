@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Button []_levels;
+    [SerializeField] private Button []levels;
 
     [Header("Graphics")]
-    [SerializeField] private Dropdown _gDropDown;
-    [SerializeField] private Dropdown _rDropDown;
-    [SerializeField] private Toggle _wToggle;
+    [SerializeField] private Dropdown gDropDown;
+    [SerializeField] private Dropdown rDropDown;
+    [SerializeField] private Toggle wToggle;
 
     [Header("Sounds")]
-    [SerializeField] private AudioMixerGroup _mixer;
-    [SerializeField] private Toggle _mToggle;
-    [SerializeField] private Slider _volume;
-    [SerializeField] private Slider _effects;
+    [SerializeField] private AudioMixerGroup mixer;
+    [SerializeField] private Toggle mToggle;
+    [SerializeField] private Slider volume;
+    [SerializeField] private Slider effects;
 
     private int _levelComplete;
     private Resolution[] _res;
@@ -34,15 +34,14 @@ public class MainMenu : MonoBehaviour
 
     private void CheckAvailableLevels()
     {
-        for (int i = 0; i < _levels.Length; i++)
+        for (int i = 0; i < levels.Length; i++)
         {
-            _levels[i].interactable = false;
+            levels[i].interactable = false;
         }
-        //PlayerPrefs.DeleteAll();
         _levelComplete = PlayerPrefs.GetInt("LevelComplete");
         for (int i = 0; i < _levelComplete; i++)
         {
-            _levels[i].interactable = true;
+            levels[i].interactable = true;
         }
     }
 
@@ -60,17 +59,17 @@ public class MainMenu : MonoBehaviour
         {
             Screen.fullScreen = true;
         }
-        _wToggle.isOn = !Screen.fullScreen;
+        wToggle.isOn = !Screen.fullScreen;
 
         //quality
-        _gDropDown.AddOptions(QualitySettings.names.ToList());
+        gDropDown.AddOptions(QualitySettings.names.ToList());
         if (PlayerPrefs.HasKey("Quality"))
         {
-            _gDropDown.value = PlayerPrefs.GetInt("Quality");
-            QualitySettings.SetQualityLevel(_gDropDown.value);
+            gDropDown.value = PlayerPrefs.GetInt("Quality");
+            QualitySettings.SetQualityLevel(gDropDown.value);
         }
         else
-            _gDropDown.value = QualitySettings.GetQualityLevel();
+            gDropDown.value = QualitySettings.GetQualityLevel();
 
         //resolution
         Resolution[] resolution = Screen.resolutions;
@@ -81,15 +80,15 @@ public class MainMenu : MonoBehaviour
         {
             resStr[i] = _res[i].width.ToString() + "x" + _res[i].height.ToString();
         }
-        _rDropDown.AddOptions(resStr.ToList());
+        rDropDown.AddOptions(resStr.ToList());
         if (PlayerPrefs.HasKey("Resolution"))
         {
-            _rDropDown.value = PlayerPrefs.GetInt("Resolution");
-            Screen.SetResolution(_res[_rDropDown.value].width, _res[_rDropDown.value].height, Screen.fullScreen);
+            rDropDown.value = PlayerPrefs.GetInt("Resolution");
+            Screen.SetResolution(_res[rDropDown.value].width, _res[rDropDown.value].height, Screen.fullScreen);
         }
         else
         {
-            _rDropDown.value = _res.Length - 1;//max by default
+            rDropDown.value = _res.Length - 1;//max by default
             Screen.SetResolution(_res[_res.Length - 1].width, _res[_res.Length - 1].height, Screen.fullScreen);
         }
     }
@@ -99,61 +98,61 @@ public class MainMenu : MonoBehaviour
         //master
         if (PlayerPrefs.HasKey("MasterVolume"))
         {
-            _volume.value = PlayerPrefs.GetFloat("MasterVolume");
+            volume.value = PlayerPrefs.GetFloat("MasterVolume");
 
         }
         else
         {
-            _volume.value = 1.0f;// max by default
+            volume.value = 1.0f;// max by default
         }
-        _mixer.audioMixer.SetFloat("masterVolume", Mathf.Lerp(-80, 0, _volume.value));
+        mixer.audioMixer.SetFloat("masterVolume", Mathf.Lerp(-80, 0, volume.value));
 
         //effects
         if (PlayerPrefs.HasKey("EffectsVolume"))
         {
-            _effects.value = PlayerPrefs.GetFloat("EffectsVolume");
+            effects.value = PlayerPrefs.GetFloat("EffectsVolume");
 
         }
         else
         {
-            _effects.value = 1.0f;// max by default
+            effects.value = 1.0f;// max by default
         }
-        _mixer.audioMixer.SetFloat("effectsVolume", Mathf.Lerp(-80, 0, _volume.value));
+        mixer.audioMixer.SetFloat("effectsVolume", Mathf.Lerp(-80, 0, volume.value));
 
         //music enabled
         if (PlayerPrefs.HasKey("EnableMusic"))
         {
             if (PlayerPrefs.GetInt("EnableMusic") == 1)
-                _mToggle.isOn = true;
+                mToggle.isOn = true;
             else
-                _mToggle.isOn = false;
-            if (_mToggle.isOn)
-                _mixer.audioMixer.SetFloat("musicVolume", 0);
+                mToggle.isOn = false;
+            if (mToggle.isOn)
+                mixer.audioMixer.SetFloat("musicVolume", 0);
             else
-                _mixer.audioMixer.SetFloat("musicVolume", -80);
+                mixer.audioMixer.SetFloat("musicVolume", -80);
         }
         else
         {
-            _mToggle.isOn = true;
-            _mixer.audioMixer.SetFloat("musicVolume", 0);
+            mToggle.isOn = true;
+            mixer.audioMixer.SetFloat("musicVolume", 0);
         }
     }
 
     public void ChangeGraphicQuality()
     {
-        QualitySettings.SetQualityLevel(_gDropDown.value);
-        PlayerPrefs.SetInt("Quality",_gDropDown.value);
+        QualitySettings.SetQualityLevel(gDropDown.value);
+        PlayerPrefs.SetInt("Quality",gDropDown.value);
     }
     
     public void ChangeResolution()
     {
-        Screen.SetResolution(_res[_rDropDown.value].width, _res[_rDropDown.value].height, Screen.fullScreen);
-        PlayerPrefs.SetInt("Resolution",_rDropDown.value);
+        Screen.SetResolution(_res[rDropDown.value].width, _res[rDropDown.value].height, Screen.fullScreen);
+        PlayerPrefs.SetInt("Resolution",rDropDown.value);
     }
 
     public void ChangeScreenMode()
     {
-        Screen.fullScreen = !_wToggle.isOn;
+        Screen.fullScreen = !wToggle.isOn;
         if (Screen.fullScreen)
         {
             PlayerPrefs.SetInt("FullScreen", 1);
@@ -164,22 +163,22 @@ public class MainMenu : MonoBehaviour
 
     public void TurnMusic()
     {
-        if(_mToggle.isOn)
-            _mixer.audioMixer.SetFloat("musicVolume", 0);
+        if(mToggle.isOn)
+            mixer.audioMixer.SetFloat("musicVolume", 0);
         else
-            _mixer.audioMixer.SetFloat("musicVolume", -80);
-        PlayerPrefs.SetInt("EnableMusic", _mToggle.isOn ? 1 : 0);
+            mixer.audioMixer.SetFloat("musicVolume", -80);
+        PlayerPrefs.SetInt("EnableMusic", mToggle.isOn ? 1 : 0);
     }
 
     public void ChangeVolume()
     {
-        _mixer.audioMixer.SetFloat("masterVolume", Mathf.Lerp(-80, 0, _volume.value));
-        PlayerPrefs.SetFloat("MasterVolume", _volume.value);
+        mixer.audioMixer.SetFloat("masterVolume", Mathf.Lerp(-80, 0, volume.value));
+        PlayerPrefs.SetFloat("MasterVolume", volume.value);
     }
 
     public void ChangeEffectsVolume()
     {
-        _mixer.audioMixer.SetFloat("effectsVolume", Mathf.Lerp(-80, 0, _effects.value));
-        PlayerPrefs.SetFloat("EffectsVolume", _effects.value);
+        mixer.audioMixer.SetFloat("effectsVolume", Mathf.Lerp(-80, 0, effects.value));
+        PlayerPrefs.SetFloat("EffectsVolume", effects.value);
     }
 }
